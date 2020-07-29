@@ -18,7 +18,13 @@ configuration:
   - Debug
   - Release
 
+before_build:
+  - cmd: dotnet restore
+
 build:
   parallel: true
   project: error-analysis-test.sln
   publish_core_console: true
+
+after_build:
+  - cmd: dotnet run
